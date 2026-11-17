@@ -1,5 +1,7 @@
 package com.example.testingtesting123
 
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -16,6 +18,11 @@ class UniqueCollectionTest {
     // TODO 1: Write a test to ensure items can be added to the collection
     @Test
     fun addAnItem() {
+        collection.addItem(Item("cheese"))
+
+        val string = collection.get(0)
+
+        assertEquals("cheese", string.name)
 
     }
 
@@ -23,7 +30,14 @@ class UniqueCollectionTest {
     // Uniqueness is determined by the Item.name property, which is set via the constructor
     @Test
     fun addUniqueItem() {
+        collection.addItem(Item("cheese"))
+        collection.addItem(Item("CHEESE"))
 
+        // check to see if cheese exists in index 1, it shouldnt
+        // actually compare size, it should only be length one
+        val size = collection.size()
+
+        assertEquals(1, size)
     }
 
     // Test Driven Development (TDD) test - complete specified function so that this test passes
